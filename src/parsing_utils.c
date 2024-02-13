@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:58:34 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/12 16:45:49 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:49:23 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	display_errors(char *msg)
+{
+	ft_putstr_fd("Error\n\n", 2);
+	ft_putstr_fd(msg, 2);
+	exit(1);
+}
 
 int	ft_strcmp(char	*s1, char *s2)
 {

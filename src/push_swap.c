@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:29:56 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/12 16:11:01 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:51:36 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-
-
-
-
-
-
 
 int	main(int ac, char **av)
 {
@@ -33,10 +26,5 @@ int	main(int ac, char **av)
 		args++;
 	}
 	int	i = 0;
-	while (args[i])
-	{
-		ft_printf("%s\n", args[i]);
-		i++;
-	}
-	handle_errors(args);
+	check_args(args);
 }
