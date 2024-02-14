@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:11:28 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/13 18:53:05 by nino             ###   ########.fr       */
+/*   Updated: 2024/02/14 15:32:10 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,29 @@
 
 # define WHITE_SPACE 32
 
-# define ARG_ERROR "An argument is missing"
 # define NB_ERROR "All arguments must be valid numbers. Please ensure no non-numeric characters are included"
 # define DUPLICATE_NB_ERROR "Arguments must be unique. Duplicates have been detected."
 # define LIMITS_NB_ERROR "One or more arguments exceed the allowed limits for an integer. Values must be between -2147483648 and 2147483647."
 
 
-# define INT_MIN -2147483648
-# define INT_MAX 2147483647
-// typedef struct s_elem
-// {
-	
-// } t_elem;
+typedef struct s_elem
+{
+	int number;
+	int rank;
 
-void	display_errors(char *msg);
+	int link;
+	int link_rank;
+	s_elem *next;
+	s_elem *prev;
+} t_elem;
+
+void	display_errors(char *msg, int nb, char **args);
 
 
 /*parsing*/
-void	check_args(char **args);
+void	check_args(char **args, int nb);
 int		ft_strcmp(char	*s1, char *s2);
 int		check_if_string_is_number(char *str);
+void	free_split_args(char **args);
 
 #endif

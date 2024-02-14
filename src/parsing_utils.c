@@ -3,20 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:58:34 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/13 18:49:23 by nino             ###   ########.fr       */
+/*   Updated: 2024/02/14 14:58:12 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	display_errors(char *msg)
+void free_split_args(char **args)
 {
-	ft_putstr_fd("Error\n\n", 2);
-	ft_putstr_fd(msg, 2);
-	exit(1);
+	int i = 0;
+	if (!args)
+		return ;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
+}
+
+void	display_errors(char *msg, int nb, char **args)
+{
+	if (nb == 1)
+	{
+		ft_putstr_fd("Error\n\n", 2);
+		ft_putstr_fd(msg, 2);
+		free_split_args(args);
+		exit(1);
+	}
+	else if (nb == 2)
+	{
+		ft_putstr_fd("Error\n\n", 2);
+		ft_putstr_fd(msg, 2);
+		exit(1);
+	}
 }
 
 int	ft_strcmp(char	*s1, char *s2)

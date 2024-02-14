@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:17:42 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/13 18:53:20 by nino             ###   ########.fr       */
+/*   Updated: 2024/02/14 15:01:30 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,28 +45,38 @@ static int	check_if_duplicate(char **args)
 	}
 	return (1);
 }
-static	int	check_limits(char **args)
+static int check_limits(char **args)
 {
-	int		i;
-	long	tmp;
+	int i;
+	int val;
+	char *converted;
 
 	i = 0;
-	while(args[i])
+	while (args[i])
 	{
-		tmp = ft_atoi(args[i]);
-		if (tmp < INT_MIN|| tmp > INT_MAX)
+		val = ft_atoi(args[i]);
+		converted = ft_itoa(val);
+
+		if (ft_strcmp(args[i], converted) != 0)
+		{
+			free(converted);
 			return (-1);
+		}
+		free(converted);
 		i++;
 	}
 	return (1);
 }
 
-void	check_args(char **args)
+
+void	check_args(char **args, int nb)
 {
 	if (check_if_nb(args) == -1)
-		display_errors(NB_ERROR);
-	if ((check_if_duplicate(args)) == -1)
-		display_errors(DUPLICATE_NB_ERROR);
-	if (check_limits(args) == -1)
-		display_errors(LIMITS_NB_ERROR);
+		display_errors(NB_ERROR, nb, args);
+	else if ((check_if_duplicate(args)) == -1)
+		display_errors(DUPLICATE_NB_ERROR, nb, args);
+	else if (check_limits(args) == -1)
+		display_errors(LIMITS_NB_ERROR, nb, args);
+	else if (nb == 1)
+		free_split_args(args);
 }
