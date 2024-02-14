@@ -6,11 +6,11 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:17:42 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/14 15:01:30 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:08:53 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static int check_if_nb(char **args)
 {

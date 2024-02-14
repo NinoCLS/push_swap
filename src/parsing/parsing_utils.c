@@ -6,11 +6,11 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:58:34 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/14 14:58:12 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:08:47 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void free_split_args(char **args)
 {

@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:11:28 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/14 15:32:10 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:40:31 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ typedef struct s_elem
 
 	int link;
 	int link_rank;
-	s_elem *next;
-	s_elem *prev;
+	struct s_elem *next;
 } t_elem;
 
 void	display_errors(char *msg, int nb, char **args);
