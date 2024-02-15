@@ -6,40 +6,32 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:58:34 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/14 16:08:47 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:00:21 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void free_split_args(char **args)
+void free_tabs(t_tabs *tabs)
 {
-	int i = 0;
-	if (!args)
-		return ;
-	while (args[i])
-	{
-		free(args[i]);
-		i++;
-	}
-	free(args);
+	if (tabs->stack_a->array)
+		free(tabs->stack_a->array);
+	if (tabs->stack_b->array)
+		free(tabs->stack_b->array);
+	if (tabs->stack_a)
+		free(tabs->stack_a);
+	if (tabs->stack_b)
+		free(tabs->stack_b);
+	if (tabs)
+		free(tabs);
 }
 
-void	display_errors(char *msg, int nb, char **args)
+void display_errors (char *msg, t_tabs *tabs)
 {
-	if (nb == 1)
-	{
-		ft_putstr_fd("Error\n\n", 2);
-		ft_putstr_fd(msg, 2);
-		free_split_args(args);
-		exit(1);
-	}
-	else if (nb == 2)
-	{
-		ft_putstr_fd("Error\n\n", 2);
-		ft_putstr_fd(msg, 2);
-		exit(1);
-	}
+	ft_putstr_fd("Error\n\n", 2);
+	ft_putstr_fd(msg, 2);
+	free_tabs(tabs);
+	exit(1);
 }
 
 int	ft_strcmp(char	*s1, char *s2)

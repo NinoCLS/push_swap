@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:17:42 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/14 16:08:53 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:45:12 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int check_if_nb(char **args)
 	i = 0;
 	while (args[i])
 	{
+		ft_printf("args[%d] = %s\n", i, args[i]);
 		if (!check_if_string_is_number(args[i]))
 			return (-1);
 		i++;
@@ -68,15 +69,12 @@ static int check_limits(char **args)
 	return (1);
 }
 
-
-void	check_args(char **args, int nb)
+void	check_args(char **args, t_tabs *tabs)
 {
 	if (check_if_nb(args) == -1)
-		display_errors(NB_ERROR, nb, args);
+		display_errors(NB_ERROR, tabs);
 	else if ((check_if_duplicate(args)) == -1)
-		display_errors(DUPLICATE_NB_ERROR, nb, args);
+		display_errors(DUPLICATE_NB_ERROR, tabs);
 	else if (check_limits(args) == -1)
-		display_errors(LIMITS_NB_ERROR, nb, args);
-	else if (nb == 1)
-		free_split_args(args);
+		display_errors(LIMITS_NB_ERROR, tabs);
 }
