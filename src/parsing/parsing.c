@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:17:42 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/15 17:45:12 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:00:37 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ static int check_limits(char **args)
 	return (1);
 }
 
-void	check_args(char **args, t_tabs *tabs)
+void	check_args(char **args)
 {
 	if (check_if_nb(args) == -1)
-		display_errors(NB_ERROR, tabs);
+		display_errors(NB_ERROR);
 	else if ((check_if_duplicate(args)) == -1)
-		display_errors(DUPLICATE_NB_ERROR, tabs);
+		display_errors(DUPLICATE_NB_ERROR);
 	else if (check_limits(args) == -1)
-		display_errors(LIMITS_NB_ERROR, tabs);
+		display_errors(LIMITS_NB_ERROR);
 }
