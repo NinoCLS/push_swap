@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:17:42 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/21 17:00:37 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:43:28 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int check_if_nb(char **args)
 	i = 0;
 	while (args[i])
 	{
-		ft_printf("args[%d] = %s\n", i, args[i]);
 		if (!check_if_string_is_number(args[i]))
 			return (-1);
 		i++;
