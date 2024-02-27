@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:11:28 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/26 17:12:07 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:24:59 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,12 @@
 # define DUPLICATE_NB_ERROR "Arguments must be unique. Duplicates have been detected."
 # define LIMITS_NB_ERROR "One or more arguments exceed the allowed limits for an integer. Values must be between -2147483648 and 2147483647."
 
-// typedef struct s_elem
-// {
-// 	int				value;
-// 	int				index;
-// 	struct s_elem 	*next;
-// }	t_elem;
-
-// typedef struct s_stack 
-// {
-// 	int		size;
-// 	t_elem	*head;
-// }	t_stack;
+typedef struct s_node
+{
+	struct s_node	*prev;
+	struct s_node	*next;
+	int				content;
+} t_node;
 
 /*actions*/
 
@@ -44,14 +38,22 @@ void	check_args(char **args);
 int		ft_strcmp(char	*s1, char *s2);
 int		check_if_string_is_number(char *str);
 
+/*list utils*/
+t_node	*new_node(int content);
+void	lst_new(int content);
+void	add_front(t_node **stack, t_node *new);
+void	add_back(t_node **stack, t_node *new);
+t_node	*pop_front(t_node **stack);
+void	lst_clear(t_node **lst);
+
 /*actions*/
-void	push(t_list **dst, t_list **src, char *instructions);
-void	reverse_rotate(t_list **stack, char *instructions);
-void	rotate(t_list **stack, char *instructions);
-void	swap(t_list **stack, char *instructions);
+void	push(t_node **dst, t_node **src, char *instructions);
+void	reverse_rotate(t_node **stack, char *instructions);
+void	rotate(t_node **stack, char *instructions);
+void	swap(t_node *stack, char *instructions);
 
 /*sort*/
-void	sort(t_list **a, t_list **b, int size);
-void	a_is_sorted(t_list **a);
+void	sort(t_node **a, t_node **b, int size);
+int		is_sorted(t_node **a);
 
 #endif
