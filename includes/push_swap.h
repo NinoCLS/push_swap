@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:11:28 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/27 19:24:59 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:25:30 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	add_front(t_node **stack, t_node *new);
 void	add_back(t_node **stack, t_node *new);
 t_node	*pop_front(t_node **stack);
 void	lst_clear(t_node **lst);
+t_node	*lst_last(t_node *lst);
 
 /*actions*/
 void	push(t_node **dst, t_node **src, char *instructions);

@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 11:59:07 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/27 19:18:39 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:27:13 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,59 +26,32 @@ int	is_sorted(t_node **a)
 	return (1);
 }
 
-
-// sa (swap a): If there are 2 numbers, swap the first 2 elements at the top of the stack a.
-// sb (swap b): If there are 2 numbers, swap the first 2 elements at the top of the stack b.
-// ss: sa and sb at the same time.
-// pa (push a): Take the first element at the top of b and put it at the top of a.
-// pb (push b): Take the first element at the top of a and put it at the top of b.
-// ra (rotate a): Shift up all elements of stack a by 1. The first element becomes the last one.
-// rb (rotate b): Shift up all elements of stack b by 1. The first element becomes the last one.
-// rr: ra and rb at the same time.
-// rra (reverse rotate a): Shift down all elements of stack a by 1. The last element becomes the first one.
-// rrb (reverse rotate b): Shift down all elements of stack b by 1. The last element becomes the first one.
-// rrr: rra and rrb at the same time.
-
-
-// trier 3 elements avec un MAXIMUM de 2 instructions
-static void sort_three(t_node **a)
+void	sort_three(t_node **lst)
 {
-	// si 1 3 2 -> sa -> ra -> 1 2 3
-	if ((*a)->content < (*a)->next->content && (*a)->next->content > (*a)->next->next->content)
+	t_node	*current;
+	t_node	*last;
+
+	current = *lst;
+	last = lst_last(*lst);
+	if (current->content > current->next->content && last->content > current->content)
+		swap(*lst, "sa\n");
+	else if (current->content > current->next->content
+		&& current->content > last->content && current->next->content < last->content)
+		rotate(lst, "ra\n");
+	else if (last->content < current->content && last->content < current->next->content
+		&& current->content < current->next->content)
+		reverse_rotate(lst, "rra\n");
+	else if (current->content > current->next->content
+		&& current->content > last->content && current->next->content > last->content)
 	{
-		swap(*a, "sa\n");
-		rotate(a, "ra\n");
+		rotate(lst, "ra\n");
+		swap(*lst, "sa\n");
 	}
-
-	// si 3 2 1 ->rra -> sa -> 1 2 3 
-	else if ((*a)->content > (*a)->next->content && (*a)->next->content > (*a)->next->next->content)
+	else if (current->content < last->content && last->content < current->next->content)
 	{
-		rotate(a, "rra\n");
-		swap(*a, "sa\n");
+		reverse_rotate(lst, "rra\n");
+		swap(*lst, "sa\n");
 	}
-
-
-	// si 3 1 2 -> rra -> sa -> ra -> 1 2 3
-	else if ((*a)->content > (*a)->next->content && (*a)->next->content < (*a)->next->next->content)
-	{
-		reverse_rotate(a, "rra\n");
-	}
-	
-
-	// // si 2 1 3 -> ra -> sa -> rra -> 1 2 3
-	// else if ((*a)->content < (*a)->next->content && (*a)->next->content > (*a)->next->next->content)
-	// {
-	// 	rotate(a, "ra\n");
-	// 	rotate(a, "sa\n");
-	// 	reverse_rotate(a, "rra\n");
-	// }
-	// // si 2 3 1 -> rra -> sa -> ra -> 1 2 3
-	// else if ((*a)->content < (*a)->next->content && (*a)->next->content > (*a)->next->next->content)
-	// {
-	// 	reverse_rotate(a, "rra\n");
-	// 	rotate(a, "sa\n");
-	// 	rotate(a, "ra\n");
-	// }
 }
 
 

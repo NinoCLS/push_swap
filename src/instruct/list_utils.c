@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 15:48:46 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/27 17:23:58 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:25:21 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,19 @@ void add_front(t_node **head, t_node *new_node)
         return;
     new_node->next = *head;
     *head = new_node;
+}
+
+// lst last 
+t_node	*lst_last(t_node *lst)
+{
+    t_node	*tmp;
+
+    if (!lst)
+        return (0);
+    tmp = lst;
+    while (tmp->next)
+        tmp = tmp->next;
+    return (tmp);
 }
 
 

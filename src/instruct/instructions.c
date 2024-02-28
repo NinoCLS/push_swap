@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:09:53 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/27 19:28:46 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:36:46 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,19 @@ void reverse_rotate(t_node **stack, char *instructions)
 {
 	t_node *first;
 	t_node *last;
+	t_node *second_last;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
 	first = *stack;
 	last = first;
-	while (last->next != NULL)
+	while (last->next != NULL) {
+		second_last = last;
 		last = last->next;
-	if (last->prev)
-		last->prev->next = NULL;
-	last->next = first;
-	first->prev = last;
-	*stack = last;
+	}
+	second_last->next = NULL; // second_last devient le dernier élément
+	last->next = first; // l'ancien dernier élément est déplacé au début
+	first->prev = last; // le pointeur prev du premier élément pointe vers le nouveau premier élément
+	*stack = last; // le pointeur de la pile pointe vers le nouveau premier élément
 	ft_putstr_fd(instructions, 1);
 }
