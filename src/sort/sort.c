@@ -3,55 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 11:59:07 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/28 17:27:13 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:08:44 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	is_sorted(t_node **a)
+void	radix_sort(t_node **a, t_node **b, int size)
 {
-	t_node	*tmp;
-
-	tmp = *a;
-	while (tmp->next != NULL)
+	int	i;
+	int	j;
+	
+	i = 0;
+	while(!is_sorted(a))
 	{
-		if (tmp->content > tmp->next->content)
-			return (0);
-		tmp = tmp->next;
+		j = 0;
+		while (j++ < size)
+		{
+			if((((*a)->content >> i) & 1) == 1)
+				rotate(a, "ra\n");
+			else
+				push(b, a, "pb\n");
+		}
+		while(*b)
+			push(a, b, "pa\n");
+		i++;
 	}
-	return (1);
 }
 
-void	sort_three(t_node **lst)
+int	find_max(t_node *lst)
 {
-	t_node	*current;
-	t_node	*last;
+	int		max;
+	t_node	*tmp;
 
-	current = *lst;
-	last = lst_last(*lst);
-	if (current->content > current->next->content && last->content > current->content)
-		swap(*lst, "sa\n");
-	else if (current->content > current->next->content
-		&& current->content > last->content && current->next->content < last->content)
-		rotate(lst, "ra\n");
-	else if (last->content < current->content && last->content < current->next->content
-		&& current->content < current->next->content)
-		reverse_rotate(lst, "rra\n");
-	else if (current->content > current->next->content
-		&& current->content > last->content && current->next->content > last->content)
+	tmp = lst;
+	max = tmp->content;
+	while (tmp)
 	{
-		rotate(lst, "ra\n");
-		swap(*lst, "sa\n");
+		if (tmp->content > max)
+			max = tmp->content;
+		tmp = tmp->next;
 	}
-	else if (current->content < last->content && last->content < current->next->content)
-	{
-		reverse_rotate(lst, "rra\n");
-		swap(*lst, "sa\n");
-	}
+	return (max);
 }
 
 
@@ -67,7 +63,10 @@ void	sort(t_node **a, t_node **b, int size)
 		rotate(a, "sa\n");
 	else if (size == 3 && !is_sorted(a))
 		sort_three(a);
-	// else if (size <= 50 && size > 2 && !is_sorted(a))
-	// 	small_sort(a, b, size);
-	
+	else if (size == 4 && !is_sorted(a))
+		sort_four(a, b);
+	else if (size == 5 && !is_sorted(a))
+		sort_five(a, b);
+	else
+		radix_sort(a, b, size);
 }

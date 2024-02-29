@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:29:56 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/28 16:34:02 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:24:54 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ t_node	*create_stack(char **av, int ac)
 void print_stack(t_node *stack)
 {
 	t_node *tmp = stack;
-	if (!tmp) return; // Si la pile est vide, ne rien faire.
+	if (!tmp) return;
 
-	while (tmp != NULL) // Parcourir jusqu'à la fin de la liste.
+	while (tmp != NULL)
 	{
 		ft_printf("%d\n", tmp->content);
 		tmp = tmp->next;

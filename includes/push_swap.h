@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:11:28 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/28 17:25:30 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:21:34 by nino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,8 @@ void	swap(t_node *stack, char *instructions);
 /*sort*/
 void	sort(t_node **a, t_node **b, int size);
 int		is_sorted(t_node **a);
+void	sort_three(t_node **lst);
+void	sort_four(t_node **a, t_node **b);
+void	sort_five(t_node **a, t_node **b);
 
 #endif
