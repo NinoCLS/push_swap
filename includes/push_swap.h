@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nino <nino@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:11:28 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/29 18:21:34 by nino             ###   ########.fr       */
+/*   Updated: 2024/03/11 15:42:46 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-
-# define WHITE_SPACE 32
 
 # define NB_ERROR "All arguments must be valid numbers. Please ensure no non-numeric characters are included"
 # define DUPLICATE_NB_ERROR "Arguments must be unique. Duplicates have been detected."
@@ -27,8 +25,6 @@ typedef struct s_node
 	struct s_node	*next;
 	int				content;
 } t_node;
-
-/*actions*/
 
 /*errors*/
 void display_errors (char *msg);
@@ -59,5 +55,13 @@ int		is_sorted(t_node **a);
 void	sort_three(t_node **lst);
 void	sort_four(t_node **a, t_node **b);
 void	sort_five(t_node **a, t_node **b);
+void	sort_three_helper(t_node *current, t_node *last, t_node **lst);
+void	sort_three_complex_case(t_node **lst);
+void	sort_three_reverse_case(t_node **lst);
+int		find_min(t_node *lst);
+int		find_max(t_node *lst);
+
+/*normalize*/
+void normalize(t_node **stack_a);
 
 #endif

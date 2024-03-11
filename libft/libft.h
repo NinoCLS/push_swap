@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 14:49:19 by nino              #+#    #+#             */
-/*   Updated: 2024/02/27 15:12:39 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:56:05 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 # define LIBFT_H
 # define SIZE_MAX (18446744073709551615UL)
 
+# include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <stdarg.h>
 
 typedef struct s_list
 {
-	void 	*content;
-	struct s_list *next;
-} t_list;
+	struct s_list	*next;
+	void			*content;
+}					t_list;
 
-// libft 
+// libft
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
@@ -64,18 +64,18 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstlast(t_list *lst);
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
+						void (*del)(void *));
 t_list				*ft_lstnew(void *content);
 int					ft_lstsize(t_list *lst);
 
-
 // ft_printf
-int	ft_printf(const char *txt, ...);
-int	ft_printchar(char c);
-int	ft_printstr(char *str);
-int	ft_printnbr(int n);
-int	ft_printptr(unsigned long long n);
-int	ft_print_unsigned_nb(unsigned int n);
-int	ft_printhex(unsigned int n, char format);
+int					ft_printf(const char *txt, ...);
+int					ft_printchar(char c);
+int					ft_printstr(char *str);
+int					ft_printnbr(int n);
+int					ft_printptr(unsigned long long n);
+int					ft_print_unsigned_nb(unsigned int n);
+int					ft_printhex(unsigned int n, char format);
 
 #endif

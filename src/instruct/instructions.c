@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:09:53 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/28 16:36:46 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:46:48 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void	push(t_node **stack_one, t_node **stack_two, char *instructions)
 	ft_putstr_fd(instructions, 1);
 }
 
-void	rotate(t_node **stack, char *instructions) 
+void	rotate(t_node **stack, char *instructions)
 {
-	t_node *first;
-	t_node *last;
+	t_node	*first;
+	t_node	*last;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-		return;
+		return ;
 	first = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
@@ -51,24 +51,24 @@ void	rotate(t_node **stack, char *instructions)
 	ft_putstr_fd(instructions, 1);
 }
 
-
-void reverse_rotate(t_node **stack, char *instructions) 
+void	reverse_rotate(t_node **stack, char *instructions)
 {
-	t_node *first;
-	t_node *last;
-	t_node *second_last;
+	t_node	*first;
+	t_node	*last;
+	t_node	*second_last;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-		return;
+		return ;
 	first = *stack;
 	last = first;
-	while (last->next != NULL) {
+	while (last->next != NULL)
+	{
 		second_last = last;
 		last = last->next;
 	}
-	second_last->next = NULL; // second_last devient le dernier élément
-	last->next = first; // l'ancien dernier élément est déplacé au début
-	first->prev = last; // le pointeur prev du premier élément pointe vers le nouveau premier élément
-	*stack = last; // le pointeur de la pile pointe vers le nouveau premier élément
+	second_last->next = NULL;
+	last->next = first;
+	first->prev = last;
+	*stack = last;
 	ft_putstr_fd(instructions, 1);
 }

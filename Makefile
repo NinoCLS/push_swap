@@ -4,10 +4,12 @@ FLAG = -Wall -Wextra -Werror -g3
 LIBFT_PATH = ./libft/
 LIBFT = libft.a
 LIBFT_LIB = $(addprefix $(LIBFT_PATH), $(LIBFT))
-C_FILES = ./parsing/parsing.c ./parsing/parsing_utils.c push_swap.c ./sort/sort.c ./instruct/instructions.c ./instruct/list_utils.c ./sort/sort_functions_utils.c
 SRC_DIR = ./src/
 INC_DIR = ./include/
-SRC = $(addprefix $(SRC_DIR), $(C_FILES))
+PARSING = $(addprefix parsing/, parsing.c parsing_utils.c)
+SORT = $(addprefix sort/, sort.c simple_sort.c simple_sort_utils.c)
+INSTRUCT = $(addprefix instruct/, instructions.c list_utils.c)
+SRC = $(addprefix $(SRC_DIR), $(PARSING) $(SORT) $(INSTRUCT) push_swap.c normalize.c)
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
 all: $(NAME)

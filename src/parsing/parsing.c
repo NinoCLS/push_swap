@@ -6,16 +6,16 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:17:42 by nclassea          #+#    #+#             */
-/*   Updated: 2024/02/26 11:43:28 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:45:33 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int check_if_nb(char **args)
+static int	check_if_nb(char **args)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (args[i])
 	{
@@ -45,18 +45,18 @@ static int	check_if_duplicate(char **args)
 	}
 	return (1);
 }
-static int check_limits(char **args)
+
+static int	check_limits(char **args)
 {
-	int i;
-	int val;
-	char *converted;
+	int		i;
+	int		val;
+	char	*converted;
 
 	i = 0;
 	while (args[i])
 	{
 		val = ft_atoi(args[i]);
 		converted = ft_itoa(val);
-
 		if (ft_strcmp(args[i], converted) != 0)
 		{
 			free(converted);
