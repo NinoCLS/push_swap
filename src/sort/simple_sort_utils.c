@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:20:23 by nino              #+#    #+#             */
-/*   Updated: 2024/03/11 15:40:10 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:34:03 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@ int	is_sorted(t_node **a)
 		tmp = tmp->next;
 	}
 	return (1);
+}
+
+int	find_max(t_node *lst)
+{
+	int		max;
+	t_node	*tmp;
+
+	tmp = lst;
+	max = tmp->content;
+	while (tmp)
+	{
+		if (tmp->content > max)
+			max = tmp->content;
+		tmp = tmp->next;
+	}
+	return (max);
 }
 
 void	sort_three_helper(t_node *current, t_node *last, t_node **lst)

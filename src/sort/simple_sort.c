@@ -6,11 +6,27 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:39:54 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/11 15:53:35 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:33:47 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+int	find_min(t_node *lst)
+{
+	int		min;
+	t_node	*tmp;
+
+	tmp = lst;
+	min = tmp->content;
+	while (tmp)
+	{
+		if (tmp->content < min)
+			min = tmp->content;
+		tmp = tmp->next;
+	}
+	return (min);
+}
 
 void	sort_three(t_node **lst)
 {

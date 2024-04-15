@@ -6,43 +6,11 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 11:59:07 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/11 15:40:48 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:33:36 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-int	find_max(t_node *lst)
-{
-	int		max;
-	t_node	*tmp;
-
-	tmp = lst;
-	max = tmp->content;
-	while (tmp)
-	{
-		if (tmp->content > max)
-			max = tmp->content;
-		tmp = tmp->next;
-	}
-	return (max);
-}
-
-int	find_min(t_node *lst)
-{
-	int		min;
-	t_node	*tmp;
-
-	tmp = lst;
-	min = tmp->content;
-	while (tmp)
-	{
-		if (tmp->content < min)
-			min = tmp->content;
-		tmp = tmp->next;
-	}
-	return (min);
-}
 
 static void	radix_sort(t_node **a, t_node **b, int size)
 {
