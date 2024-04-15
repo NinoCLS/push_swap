@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:11:28 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/11 15:42:46 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:19:02 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,22 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-
-# define NB_ERROR "All arguments must be valid numbers. Please ensure no non-numeric characters are included"
-# define DUPLICATE_NB_ERROR "Arguments must be unique. Duplicates have been detected."
-# define LIMITS_NB_ERROR "One or more arguments exceed the allowed limits for an integer. Values must be between -2147483648 and 2147483647."
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
 
 typedef struct s_node
 {
 	struct s_node	*prev;
 	struct s_node	*next;
 	int				content;
-} t_node;
-
-/*errors*/
-void display_errors (char *msg);
+}	t_node;
 
 /*parsing*/
+void	display_errors(char *msg);
 void	check_args(char **args);
 int		ft_strcmp(char	*s1, char *s2);
 int		check_if_string_is_number(char *str);
+long	ft_atol(const char *str);
 
 /*list utils*/
 t_node	*new_node(int content);
@@ -62,6 +59,6 @@ int		find_min(t_node *lst);
 int		find_max(t_node *lst);
 
 /*normalize*/
-void normalize(t_node **stack_a);
+void	normalize(t_node **stack_a);
 
 #endif

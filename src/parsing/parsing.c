@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:17:42 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/11 14:45:33 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:17:49 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,14 @@ static int	check_if_duplicate(char **args)
 static int	check_limits(char **args)
 {
 	int		i;
-	int		val;
-	char	*converted;
+	long	val;
 
 	i = 0;
 	while (args[i])
 	{
-		val = ft_atoi(args[i]);
-		converted = ft_itoa(val);
-		if (ft_strcmp(args[i], converted) != 0)
-		{
-			free(converted);
+		val = ft_atol(args[i]);
+		if (val < INT_MIN || val > INT_MAX)
 			return (-1);
-		}
-		free(converted);
 		i++;
 	}
 	return (1);
@@ -71,9 +65,9 @@ static int	check_limits(char **args)
 void	check_args(char **args)
 {
 	if (check_if_nb(args) == -1)
-		display_errors(NB_ERROR);
+		display_errors("Error\n");
 	else if ((check_if_duplicate(args)) == -1)
-		display_errors(DUPLICATE_NB_ERROR);
+		display_errors("Error\n");
 	else if (check_limits(args) == -1)
-		display_errors(LIMITS_NB_ERROR);
+		display_errors("Error\n");
 }

@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:58:34 by nclassea          #+#    #+#             */
-/*   Updated: 2024/03/11 14:45:26 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:19:34 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	display_errors(char *msg)
 {
-	ft_putstr_fd("Error\n\n", 2);
 	ft_putstr_fd(msg, 2);
 	exit(1);
 }
@@ -42,4 +41,28 @@ int	check_if_string_is_number(char *str)
 		str++;
 	}
 	return (1);
+}
+
+long	ft_atol(const char *str)
+{
+	long	nb;
+	int		sign;
+
+	nb = 0;
+	sign = 1;
+	while (*str == ' ' || *str == '\t' || *str == '\n'
+		|| *str == '\v' || *str == '\f' || *str == '\r')
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		nb = nb * 10 + (*str - '0');
+		str++;
+	}
+	return (nb * sign);
 }

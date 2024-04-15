@@ -6,7 +6,7 @@
 /*   By: nclassea <nclassea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:39:54 by nclassea          #+#    #+#             */
-/*   Updated: 2024/04/15 14:33:47 by nclassea         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:17:27 by nclassea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ void	sort_four(t_node **a, t_node **b)
 
 void	sort_five(t_node **a, t_node **b)
 {
-	int	min;
-
-	min = find_min(*a);
-	while ((*a)->content != min)
-		rotate(a, "ra\n");
-	push(b, a, "pb\n");
-	sort_four(a, b);
-	push(a, b, "pa\n");
+	while (!is_sorted(a))
+	{
+		if ((*a)->content == find_max(*a) || (*a)->content == find_min(*a))
+			rotate(a, "ra\n");
+		else
+			push(b, a, "pb\n");
+	}
+	while (*b)
+		push(a, b, "pa\n");
 }
